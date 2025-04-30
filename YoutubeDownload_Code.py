@@ -5,6 +5,7 @@ def video_downloader(url):
         ydl_opts = {
             'quiet': True,
             'no_warnings': True,
+            'forcejson': True,
             'skip_download': True,
             'format': 'best',
         }
@@ -21,6 +22,7 @@ def video_downloader(url):
 def get_audio_url(video_url):
     # Define options for yt_dlp
     ydl_opts = {
+        'forcejson': True,
         'quiet': True,  # Suppress regular output
         'skip_download': True,  # Don't download, just extract info
     }
