@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>YouTube Downloader</title>
+
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Optional: Add custom styles -->
+  <style>
+    body {
+      background-color: #f8f9fa;
+      padding-top: 50px;
+    }
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    .header {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <div class="header">
+      <h1>YouTube Video Downloader</h1>
+      <p class="lead">Enter the YouTube URL below to download video or extract information.</p>
+    </div>
+
+    <!-- Form to input YouTube URL -->
+    <form action="/download" method="GET">
+      <div class="mb-3">
+        <label for="videoUrl" class="form-label">YouTube Video URL</label>
+        <input type="url" class="form-control" id="videoUrl" name="videoUrl" placeholder="https://www.youtube.com/watch?v=VIDEO_ID" required>
+      </div>
+
+      <!-- Options for download -->
+      <div class="mb-3">
+        <label class="form-label">Choose Download Type</label>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="downloadType" id="videoOnly" value="video" checked>
+          <label class="form-check-label" for="videoOnly">
+            Video Only
+          </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="downloadType" id="audioOnly" value="audio">
+          <label class="form-check-label" for="audioOnly">
+            Audio Only (MP3)
+          </label>
+        </div>
+      </div>
+
+      <button type="submit" class="btn btn-primary w-100">Download</button>
+    </form>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+  {% if messages %}
+    {% for category, message in messages %}
+      {% if category == 'error' %}
+        <div class="alert alert-danger alert-dismissible fade show mt-3" role="alert">
+          {{ message }}
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+      {% endif %}
+    {% endfor %}
+  {% endif %}
+{% endwith %}
+  </div>
+
+  <!-- Bootstrap 5 JS and Popper (Optional, for tooltips and modals) -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
