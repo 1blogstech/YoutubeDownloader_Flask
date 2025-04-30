@@ -68,6 +68,3 @@ def download():
             }
 
         return render_template("download_video.html",url=stream_url,info=video_data, requested=type)
-
-if __name__ == "__main__":
-    app.run("0.0.0.0",80,True)
